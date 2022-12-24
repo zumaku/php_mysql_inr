@@ -3,9 +3,23 @@
     // Fungsi ini untuk mengoneksikan web kita ke database menggunakan mysqli_connect
     $koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan');
 
+
     // cek koneksi ke database berhasi atau tidak
-    if($koneksi) echo "Koneksi Berhasil!";
-    else echo "Koneksi Gagal!"
+    // if($koneksi) echo "Koneksi Berhasil!";
+    // else echo "Koneksi Gagal!"
+
+
+    $query = "SELECT * FROM buku";      // Variable untuk menampung perintah query
+
+    $hasil = mysqli_query($koneksi, $query);      // Fungsi untuk mengeksekusi query. Berisi dua argumen untuk di eksekusi. Argumen pertama berisi koneksinya ke database dan argumen kedua berisi query yang akan dieksekusi. Nah.. fungsi ini disimpan ke dalam variable hasil.
+
+
+
+    $dataBuku = array();
+    while($baris = mysqli_fetch_assoc($hasil)){     // Selama melakukan pengambilan data dari tabel
+        array_push($dataBuku, $baris);      // Memasukkan sebaris data dari tabel
+    }
+    // var_dump($data);
 
 ?>
 
@@ -22,7 +36,7 @@
 <body>
     
 
-    <div class="container">
+    <div class="container mt-10">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <div class="card">
@@ -33,22 +47,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table tabel-hover">
+                        <table class="table table
+                        -hover">
                             <thead>
                                 <tr>
                                     <td>No</td>
                                     <td>Judul Buku</td>
                                     <td>Deskripsi</td>
+                                    <td>Tahun Terbit</td>
                                     <td>Penulis</td>
                                 </tr>
                             </thead>
                             <tbody>
+
+                                <?php
+                                    $i = 1;
+                                    foreach($dataBuku as $buku):
+                                ?>
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>Lorem</td>
-                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod excepturi asperiores ut, distinctio inventore velit explicabo dolores, dolorum ipsam nesciunt sed accusamus cum. Repellendus aut asperiores aliquid soluta nihil laboriosam!</td>
-                                    <td>Lorem</td>
+                                    <td><?= $i ?></td>
+                                    <td><?= $buku['judul'] ?></td>
+                                    <td><?= $buku['deskripsi'] ?></td>
+                                    <td><?= $buku['tahun_terbit'] ?></td>
+                                    <td><?= $buku['penulis'] ?></td>
                                 </tr>
+
+                                <?php
+                                    $i++;
+                                    endforeach;
+                                ?>
                             </tbody>
                         </table>
                     </div>
