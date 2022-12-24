@@ -1,3 +1,14 @@
+<?php
+
+    // Fungsi ini untuk mengoneksikan web kita ke database menggunakan mysqli_connect
+    $koneksi = mysqli_connect('localhost', 'root', '', 'perpustakaan');
+
+    // cek koneksi ke database berhasi atau tidak
+    if($koneksi) echo "Koneksi Berhasil!";
+    else echo "Koneksi Gagal!"
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +43,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr></tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Lorem</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod excepturi asperiores ut, distinctio inventore velit explicabo dolores, dolorum ipsam nesciunt sed accusamus cum. Repellendus aut asperiores aliquid soluta nihil laboriosam!</td>
+                                    <td>Lorem</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
