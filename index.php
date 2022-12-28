@@ -56,16 +56,19 @@
                                 ?>
     
                                 <!-- form menambah data baru -->
-                                <form action="">
+                                <form action="" method="POST">
                                     <tr hidden="hidden" id="formData">
                                             <td><?= $i ?></td>
                                             <td><input type="text" name="judul"></td>
-                                            <td><textarea name="" id="" cols="30" rows="1" style="resize: row;" name="deskripsi"></textarea></td>
+                                            <td><textarea name="deskrip" id="" cols="30" rows="1" style="resize: row;"></textarea></td>
                                             <td><input type="date" name="tahun"></td>
                                             <td><input type="text" name="penulis"></td>
                                     </tr>
                                     <tr hidden="hidden" id="BtnPushData">
-                                        <td colspan="5"><button id="pushData" class="btn btn-success">Tambahkan</button></td>
+                                        <td colspan="5">
+                                            <button type="submit" id="pushData" class="btn btn-success" name="tambah">Tambahkan</button>
+                                            <button id="cancelData" class="btn btn-danger">Batal</button>
+                                        </td>
                                     </tr>
                                 </form>
                             </tbody>
@@ -79,7 +82,7 @@
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
